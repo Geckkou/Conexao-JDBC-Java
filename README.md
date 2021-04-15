@@ -1,4 +1,4 @@
-### Conexão-JDBC-Java
+# Conexão-JDBC-Java
 
 ## Instruções 
 
@@ -6,37 +6,39 @@
 
 ## Comandos
 
-# Cria um banco de dados: 
+### Cria um banco de dados: 
+```sql
+create database conexaoBD; (use o nome que você desejar)
+use conexaobd;
+```
 
-- create database conexaoBD; (use o nome que você desejar)
-- use conexaobd;
+### Cria as Tabelas: 
 
-# Cria as Tabelas: 
+```sql
+create table if not exists cliente( 
+id integer not null auto_increment, 
+nome varchar(50) not null, 
+email varchar (40) not null, 
+constraint pk_key primary key(id) );
 
-- create table if not exists cliente(
-	id integer not null auto_increment,
-    nome varchar(50) not null,
-    email varchar (40) not null,
-    constraint pk_key primary key(id)
+create table if not exists endereco(
+idendereco integer not null auto_increment,
+logadouro varchar(300) not null,
+numero integer not null,
+cidade varchar(100) not null,
+estado varchar(2) not null,
+idcliente integer,
+constraint pk_endereco primary key(idendereco),
+constraint fk_idcliente foreign key(idcliente) references cliente(id)
 );
 
-- create table if not exists endereco(
-	idendereco integer not null auto_increment,
-    logadouro varchar(300) not null,
-    numero integer not null,
-    cidade varchar(100) not null,
-    estado varchar(2) not null,
-    idcliente integer,
-    constraint pk_endereco primary key(idendereco),
-    constraint fk_idcliente foreign key(idcliente) references cliente(id)
+create table if not exists usuario(
+id integer not null auto_increment,
+login varchar(50) not null,
+senha varchar (40) not null,
+constraint pk_key primary key(id)
 );
-
-- create table if not exists usuario(
-	id integer not null auto_increment,
-    login varchar(50) not null,
-    senha varchar (40) not null,
-    constraint pk_key primary key(id)
-);
+```
 
 ## Mais sobre.
 
@@ -47,6 +49,5 @@
 - Todos os inserts para teste podem ser feitos atráves da interface.
 
 - Durante o Projeto aconteceu um bug onde a classe EndercoDAO(referente a tabela endereço) tornou-se privada, então botei ela dentro do pacote de interfaces para poder realizar as importações necessárias.
-
 
 
