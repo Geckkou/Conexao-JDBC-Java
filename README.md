@@ -9,7 +9,7 @@
 # Cria um banco de dados: 
 
 - create database conexaoBD; (use o nome que você desejar)
-use conexaobd;
+- use conexaobd;
 
 # Cria as Tabelas: 
 
